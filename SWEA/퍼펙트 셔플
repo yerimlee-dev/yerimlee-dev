@@ -1,0 +1,52 @@
+import java.io.*;
+import java.util.*;
+ 
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+ 
+        int t = Integer.parseInt(br.readLine());
+ 
+        for (int tc = 1; tc <= t; tc++) {
+            int n = Integer.parseInt(br.readLine());
+             
+            int size1 = 0;
+            int size2 = 0;
+             
+            if (n % 2 == 0) {
+                size1 = n / 2;
+                size2 = n / 2;
+            } else {
+                size1 = n / 2 + 1;
+                size2 = n / 2;              
+            }
+             
+            String[] card1 = new String[size1];
+            String[] card2 = new String[size2];
+             
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            for (int i = 0; i < size1; i++) {
+                card1[i] = st.nextToken();
+            }
+             
+            for (int i = 0; i < size2; i++) {
+                card2[i] = st.nextToken();
+            }
+             
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < size2; i++) {
+                sb.append(card1[i] + " ");
+                sb.append(card2[i] + " ");
+            }
+             
+            if (n % 2 != 0) {
+                sb.append(card1[size1 - 1]);
+            }
+             
+            bw.write("#" + tc + " " + sb.toString() + "\n");
+        }
+         
+        bw.flush();
+    }
+}
